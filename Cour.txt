@@ -1,0 +1,27 @@
+Serialisation : est la capacité de transformer un objet vers un format donné, le plus souvent en textuel en fin de le transporter
+
+il existe plusieurs formats différents; le plus connus sont
+
+ * XML(extensible, markup language) :  est le plus anciens  = > il utilise le protocol SOAP
+ * JSon (JavaScript object Notation) : Aujourd'hui le plus utilise vu la popularité de JavaScript 
+   (la consomation se fait avec le protocol REST)
+ * gRPC (Google Remote Protocol, Call) => il est cent pour cent Binaire
+
+NB: Les données sont stockézs dans des propriétés/ memebres
+accessibles publiquement en lecture & écriture
+il faut mieux utilisé un constructeur sans parametre
+
+.Net il est préferable de sérialisér que les DTO
+
+C# va nous permetre de gerer le XML de deux façons:
+
+* Soit une représentation complète en mémoire du flux XMl
+  C'est à dire il y'a un objet qui va lire tout le flux xml et qui va le stocker en mémoire( c'est plus facil de naviguer dessus) 
+*Soit en mode Stream =>(avec ce mode, vaut mieux utilisé avec un taille très important)
+ => pour lire un fichier en mode Stream il faut utilisé la Classe XmlReader qui est plus performante pour lire un fichier xml
+
+Exple : var reader = XmlReader.Create(@"C:\test\fichier.xml")
+
+pour ignore les commentaire et les espaces 
+vaut mieux utilisés XmlReaderSettings
+

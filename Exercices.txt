@@ -1,0 +1,8 @@
+-------------------------------------Exercices---------------------------- 
+Exo1: En copiant le fichier XML fourni en ressource:
+
+1) Déduire la classe, les propriétés et leur type à partir du XML
+2) Avec la classe XMLReader, lire le fichier pour alimenter une instance de la classe Personne et afficher les informations
+sur la console
+
+NB : pour pouvoir être lu, votre fichier xml doit se trouver dans le même répertoire que votre code source
