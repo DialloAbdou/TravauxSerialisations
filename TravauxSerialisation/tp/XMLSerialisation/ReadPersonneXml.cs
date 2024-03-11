@@ -1,14 +1,16 @@
-﻿using System;
+﻿using ModelsSerialisation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace TpSerialisation
+namespace XMLSerialisation
 {
     public class ReadPersonneXml
     {
+
         public Personne GetReadPersonneXml()
         {
             var settings = new XmlReaderSettings
@@ -16,12 +18,16 @@ namespace TpSerialisation
                 IgnoreWhitespace = true,
                 IgnoreComments = true
             };
+            var personne = new Personne();
 
-            Personne personne = new Personne();
-            var reader = XmlReader.Create(@"C:\FormationC#\fondamentoC#\Serialisations\TravauxPratiques\TpSerialisation\fichier.xml", settings);
+            var Setting = new XmlReaderSettings
+            {
+                IgnoreWhitespace = true,
+                IgnoreComments = true
 
-            reader.MoveToContent();
+            };
 
+            var reader = XmlReader.Create(@"C:\FormationC#\fondamentoC#\Serialisations\Docs\fichier.xml");
             reader.ReadStartElement("Personne");
             reader.ReadStartElement("Nom");
             personne.Nom = reader.ReadContentAsString();
@@ -39,6 +45,8 @@ namespace TpSerialisation
             personne.Taille = reader.ReadContentAsInt();
             reader.ReadEndElement();
             return personne;
+
+
         }
     }
 }
