@@ -4,15 +4,16 @@ using XMLSerialisation;
 
 Console.WriteLine("Serialisation");
 
+// ReadXML Lecture XML
 var readPersonne = new ReadPersonneXml();
 
 var personneXml = readPersonne.GetReadPersonneXml();
 if (personneXml is not null)
 {
     Console.WriteLine($"Nom : {personneXml.Nom}, Prenom: {personneXml.Prenome},DateNaissance : {personneXml.DateNaissance}");
-
 }
-// Creation d'un fichier xml 
+
+//  WriteXML Creation d'un fichier xml 
 var personne1 = new Personne
 {
     Nom = "DIALLO",
@@ -20,7 +21,17 @@ var personne1 = new Personne
     DateNaissance = new DateTime(1982, 5, 6)
 
 };
-var writePersonne = new WritePersonneXml();
+WritePersonneXml? writePersonne = new WritePersonneXml();
 writePersonne.CreatePersonneXml(personne1 );
 Console.WriteLine("fichier a été créer avec succès !");
+
+// Gestion XML en mémoire avec XDocument
+var xmldocument = new XMLDocumentPersonne();
+var personne = new Personne();
+ var perso=  xmldocument.ReadXmlDocument(personne);
+
+Console.WriteLine("Gestion XMl en mémoire avec XDocument !");
+
+Console.WriteLine($"{perso.Nom}, {perso.Prenome} {perso.DateNaissance}, {perso.Taille}");
+
 Console.ReadLine();
