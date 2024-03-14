@@ -11,10 +11,10 @@ namespace XMLSerialisation
 {
     public class XMLDocumentPersonne
     {
-        public Personne  ReadXmlDocument(Personne personne)
+        public Personne  ReadXmlDocument(Personne personne, XDocument doc)
         {
             // instanciation de XDocument
-            var doc = XDocument.Load(@"C:\FormationC#\fondamentoC#\Serialisations\Docs\fichier.xml");
+
             if (doc.Root is not null)
             {
                 foreach (var elm in doc.Root.Elements())
@@ -27,20 +27,23 @@ namespace XMLSerialisation
                     {
                         personne.Prenome = elm.Value;
 
-                    } else if(elm.Name == "DateDeNaissance")
+                    }
+                    else if (elm.Name == "DateDeNaissance")
                     {
                         personne.DateNaissance = DateTime.Parse(elm.Value);
 
-                    } else if(elm.Name == "Taille")
+                    }
+                    else if (elm.Name == "Taille")
                     {
                         personne.Taille = int.Parse(elm.Value);
+                    }
+                    else if(elm.Name == "Adresse")
+                    {
+                        personne.Adresse = elm.Value;
                     }
                 }
             }
             return personne;
-
-
-
         }
     }
 }

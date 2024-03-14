@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ModelsSerialisation;
+using System.Xml.Linq;
 using XMLSerialisation;
 
 Console.WriteLine("Serialisation");
@@ -22,16 +23,31 @@ var personne1 = new Personne
 
 };
 WritePersonneXml? writePersonne = new WritePersonneXml();
-writePersonne.CreatePersonneXml(personne1 );
-Console.WriteLine("fichier a été créer avec succès !");
+writePersonne.CreatePersonneXml(personne1);
+//Console.WriteLine("fichier a été créer avec succès !");
 
 // Gestion XML en mémoire avec XDocument
-var xmldocument = new XMLDocumentPersonne();
-var personne = new Personne();
- var perso=  xmldocument.ReadXmlDocument(personne);
+var adresse = new XElement("Adresse", "52 rue Ferertra 31400 Toulouse");
 
-Console.WriteLine("Gestion XMl en mémoire avec XDocument !");
+var doc = XDocument.Load(@"C:\FormationC#\fondamentoC#\Serialisations\Docs\fichier.xml");
+if (doc.Root is not null)
+{
+    var elemTaille = doc.Root.Element("Taille");
+    if (elemTaille is not null)
+    {
+        elemTaille.AddAfterSelf(adresse);
 
-Console.WriteLine($"{perso.Nom}, {perso.Prenome} {perso.DateNaissance}, {perso.Taille}");
+        var xmldocument = new XMLDocumentPersonne();
+
+        var personne = new Personne();
+
+        var perso = xmldocument.ReadXmlDocument(personne, doc);
+
+        Console.WriteLine("Gestion XMl en mémoire avec XDocument !");
+
+        Console.WriteLine($"{perso.Nom}, {perso.Prenome} {perso.DateNaissance}, {perso.Taille}, {perso.Adresse}");
+    }
+}
+
 
 Console.ReadLine();

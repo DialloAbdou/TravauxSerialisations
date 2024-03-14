@@ -25,3 +25,7 @@ Exple : var reader = XmlReader.Create(@"C:\test\fichier.xml")
 pour ignore les commentaire et les espaces 
 vaut mieux utilisés XmlReaderSettings
 
+XML En mémoire :
+L'autre approche du XMl consiste à avoire la totalité de la structure en mémoire
+cela passe par l'utilisation de la classe XDocument en utlisant le fichier avec la methode Load
+on peut parcourir avec linq ou à l'aide de boucles

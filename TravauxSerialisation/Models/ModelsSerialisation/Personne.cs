@@ -12,6 +12,7 @@ namespace ModelsSerialisation
         public string Prenome { get; set; } = string.Empty;
         public DateTime DateNaissance { get; set; }
         public int Taille { get; set; }
+        public string Adresse { get; set; } = string.Empty;
 
 
     }
