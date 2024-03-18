@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Models\ModelsSerialisation\ModelsSerialisation.csproj" />
     <ProjectReference Include="..\..\tp\XMLSerialisation\XMLSerialisation.csproj" />
+    <ProjectReference Include="..\JsonSerialisation\JsonSerialisation.csproj" />
   </ItemGroup>
 
 </Project>

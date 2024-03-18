@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using JsonSerialisation;
 using ModelsSerialisation;
 using System.Xml.Linq;
 using XMLSerialisation;
@@ -49,5 +50,7 @@ if (doc.Root is not null)
     }
 }
 
+var jsonWrite = new WritePersonne();
+jsonWrite.EcrireJsonPersonne();
 
 Console.ReadLine();
