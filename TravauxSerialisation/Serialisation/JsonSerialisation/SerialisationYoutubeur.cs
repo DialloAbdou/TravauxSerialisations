@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -15,17 +16,21 @@ namespace JsonSerialisation
         public string GetSerialisation()
         {
             Youtubeur youtubeurAbdou = new Youtubeur { Nom = "Diallo", Prenom = "Abdou", Titre = "Developpeur .Net" };
-            var VideoBlazor = new Video { Titre = "Blazor Assembly", Duree = 15 };
-            var VideoAngular = new Video { Titre = "AngularJS", Duree = 25 };
-           
-            youtubeurAbdou.Videos = new() { VideoAngular, VideoBlazor };
-            youtubeurAbdou.Videos.Add(VideoAngular);
-            youtubeurAbdou.Videos.Add(VideoBlazor);
+
+            List<Video> videos = new List<Video>
+            {
+                new Video { Titre = "Serialisation & Deserialisaation", Duree = 25, Tags= new List<string>{" JSon, Objet"} },
+                new Video { Titre = "Manipulation Base de donnée", Duree = 25, Tags= new List<string>{" Sql Server, Oracle"} },
+                new Video { Titre = "Angular & React", Duree = 25, Tags= new List<string>{" Front, Mobile"} }
+
+            };
+            youtubeurAbdou.Videos = videos;
 
             var json = JsonSerializer.Serialize(youtubeurAbdou, new JsonSerializerOptions
             {
                 WriteIndented = true,
-                ReferenceHandler = ReferenceHandler.Preserve
+                ReferenceHandler = ReferenceHandler.Preserve,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             });
 
             return json;

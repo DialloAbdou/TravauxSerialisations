@@ -11,6 +11,6 @@ namespace ModelsSerialisation
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;
         public string Titre { get; set; } = string.Empty;
-        public List<Video> Videos { get; set; }
+        public List<Video>? Videos { get; set; }
     }
 }
